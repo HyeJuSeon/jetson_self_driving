@@ -4,3 +4,5 @@ video/group.gif filter=lfs diff=lfs merge=lfs -text
 first_car/best_alexnet_trt.pth filter=lfs diff=lfs merge=lfs -text
 first_car/best_alexnet.pth filter=lfs diff=lfs merge=lfs -text
 first_car/best_resnet_trt.pth filter=lfs diff=lfs merge=lfs -text
+following_car/best_resnet_trt.pth filter=lfs diff=lfs merge=lfs -text
+following_car/best_resnet.pth filter=lfs diff=lfs merge=lfs -text
