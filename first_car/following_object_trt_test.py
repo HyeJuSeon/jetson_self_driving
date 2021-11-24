@@ -84,11 +84,11 @@ def execute_model(image):
     steering_value = pid + steering_bias_value
     left_motor_value = max(min(speed_value + steering_value, 1.0), 0.0)
     right_motor_value = max(min(speed_value - steering_value, 1.0), 0.0)
-    print("speed=",speed_value, " angle=", angle, " sterring=", steering_value )
+    print('speed=', speed_value, ' angle=', angle, ' sterring=', steering_value)
    
     set_speed(motor_left_ID,   left_motor_value)
     set_speed(motor_right_ID,  right_motor_value)
-    print("motor left=",left_motor_value, " right=", right_motor_value,  )
+    print('motor left=', left_motor_value, ' right=', right_motor_value)
 
 def set_speed(motor_ID, value):
 	max_pwm = 115.0
@@ -122,23 +122,23 @@ def image_processing(output):
 def video(openpath, savepath = None):
     cap = cv2.VideoCapture(openpath)
     if cap.isOpened():
-        print("Video Opened")
+        print('Video Opened')
     else:
-        print("Video Not Opened")
-        print("Program Abort")
+        print('Video Not Opened')
+        print('Program Abort')
         exit()
     fps = cap.get(cv2.CAP_PROP_FPS)
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     print(width)
     print(height)
-    print('--')
+    print('--' * 20)
 
     out = None
-    #if savepath is not None:
-        #out = cv2.VideoWriter(savepath, fourcc, fps, (width, height), True)
-    cv2.namedWindow("Input", cv2.WINDOW_GUI_EXPANDED)
-    #cv2.namedWindow("Output", cv2.WINDOW_GUI_EXPANDED)
+    # if savepath is not None:
+    #     out = cv2.VideoWriter(savepath, fourcc, fps, (width, height), True)
+    cv2.namedWindow('Input', cv2.WINDOW_GUI_EXPANDED)
+    # cv2.namedWindow('Output', cv2.WINDOW_GUI_EXPANDED)
     linecolor1 = (0,240,240)
     linecolor2 = (230,0,0)
 
@@ -150,14 +150,13 @@ def video(openpath, savepath = None):
                 # Our operations on the frame come here
                 frame = cv2.resize(frame, dsize=(224, 224), interpolation=cv2.INTER_AREA)
                 output = image_processing(frame)		
-                cv2.imshow("Input", frame)			
+                cv2.imshow('Input', frame)			
             else:
                 break
 
             if cv2.waitKey(int(1000.0/fps)) & 0xFF == ord('q'):
                 break
     except KeyboardInterrupt:  
-        print("key int")
         all_stop()
         cap.release()
         cv2.destroyAllWindows()

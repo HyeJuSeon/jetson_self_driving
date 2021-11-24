@@ -65,10 +65,10 @@ def all_stop():
 def video(openpath, savepath = None):
     cap = cv2.VideoCapture(openpath)
     if cap.isOpened():
-        print("Video Opened")
+        print('Video Opened')
     else:
-        print("Video Not Opened")
-        print("Program Abort")
+        print('Video Not Opened')
+        print('Program Abort')
         exit()
     fps = cap.get(cv2.CAP_PROP_FPS)
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -82,14 +82,13 @@ def video(openpath, savepath = None):
             ret, frame = cap.read()
             if ret:
                 image_processing(frame)
-                cv2.imshow("Output", frame)
+                cv2.imshow('Output', frame)
             else:
                 break
 
             if cv2.waitKey(int(1000.0 / fps)) & 0xFF == ord('q'):
                 break
     except KeyboardInterrupt:  
-        print("key int")
         all_stop()
         cap.release()
         cv2.destroyAllWindows()
